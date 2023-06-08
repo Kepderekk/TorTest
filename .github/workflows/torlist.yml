@@ -1,0 +1,21 @@
+name: Güncellenen IP Listesini Al
+
+on:
+  schedule:
+    - cron: "0 0 * * *"
+
+jobs:
+  sync_files:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout Repository
+      uses: actions/checkout@v2
+
+    - name: Sync Files
+      run: |
+        # Hedef dosyayı indir
+        wget https://github.com/SecOps-Institute/Tor-IP-Addresses/blob/master/tor-nodes.lst/<Tor-IP-Addresses>/<tor-nodes.lst> -O tortest.txt
+
+        # Dosyayı bilgisayarınıza senkronize et
+        cp tortest.txt C:\Users\oguzhan.ozdemir\Desktop
